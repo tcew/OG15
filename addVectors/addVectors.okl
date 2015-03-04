@@ -1,0 +1,13 @@
+kernel void addVectors(const int entries,
+                       const int *a,
+                       const int *b,
+                       int *ab){
+
+  for(int block = 0; block < entries; block += 16; outer0){
+    for(int thread = block; thread < (block + 16); ++thread; inner0){
+      if(thread < entries){
+        ab[thread] = a[thread] + b[thread];
+      }
+    }
+  }
+}
